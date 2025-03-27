@@ -1,12 +1,13 @@
-﻿using System;
+using System;
 
 class Lanchonete
 {
-
+    // Cadastro de produtos disponíveis
     static string[] produtos = { "X-Burguer", "Refrigerante", "Sorvete" };
     static double[] precos = { 15.0, 5.0, 7.0 };
-    static int[] quantidades = new int[produtos.Length];
+    static int[] quantidades = new int[produtos.Length]; // Quantidade de cada produto no pedido
 
+    // Programa principal
     static void Main(string[] args)
     {
         int opcao;
@@ -45,6 +46,7 @@ class Lanchonete
         } while (opcao != 5);
     }
 
+    // Exibe o menu para o usuário
     static void ExibirMenu()
     {
         Console.Clear();
@@ -57,6 +59,7 @@ class Lanchonete
         Console.Write("Escolha uma opção: ");
     }
 
+    // Lista os produtos disponíveis
     static void ListarProdutos()
     {
         Console.WriteLine("\nProdutos Disponíveis:");
@@ -67,6 +70,8 @@ class Lanchonete
         Console.WriteLine("\nPressione Enter para continuar.");
         Console.ReadLine();
     }
+
+    // Adiciona um produto ao pedido
     static void AdicionarProduto()
     {
         ListarProdutos();
@@ -91,6 +96,8 @@ class Lanchonete
         Console.WriteLine($"Produto {produtos[produtoIndex - 1]} adicionado ao pedido.\nPressione Enter para continuar.");
         Console.ReadLine();
     }
+
+    // Remove um produto do pedido
     static void RemoverProduto()
     {
         Console.WriteLine("\nPedido Atual:");
@@ -142,6 +149,8 @@ class Lanchonete
         Console.WriteLine("Pressione Enter para continuar.");
         Console.ReadLine();
     }
+
+    // Visualiza o pedido atual
     static void VisualizarPedido()
     {
         Console.WriteLine("\nPedido Atual:");
@@ -166,6 +175,8 @@ class Lanchonete
         Console.WriteLine($"Total Bruto: R$ {totalBruto:F2}\nPressione Enter para continuar.");
         Console.ReadLine();
     }
+
+    // Finaliza o pedido e calcula o total
     static void FinalizarPedido()
     {
         double totalBruto = 0;
@@ -179,9 +190,12 @@ class Lanchonete
                 totalBruto += precos[i] * quantidades[i];
             }
         }
+
+        // Aplicar desconto de 10% caso o total ultrapasse R$ 100,00
         double desconto = totalBruto > 100 ? totalBruto * 0.10 : 0;
         double valorFinal = totalBruto - desconto;
 
+        // Condição especial para frete grátis se mais de 5 itens forem comprados
         if (totalItens > 5)
         {
             Console.WriteLine("Você ganhou frete grátis por comprar mais de 5 itens!");
